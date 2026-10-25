@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aurelia Jewellery</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#fbfaf9;--surface:#f1eeea;--ink:#1f2124;--muted:#6c6862;--gold:#a98652;--deep:#1d3830;--deep-ink:#f3efe8;--line:#ded9d2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16171a;--surface:#202226;--ink:#efece6;--muted:#a09b93;--gold:#c9a56e;--deep:#10261f;--deep-ink:#f3efe8;--line:#34363b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16171a;--surface:#202226;--ink:#efece6;--muted:#a09b93;--gold:#c9a56e;--deep:#10261f;--deep-ink:#f3efe8;--line:#34363b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.65 Jost,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;line-height:1.05;margin:0}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:"Cormorant Garamond",serif;font-size:28px;letter-spacing:.04em}
+nav{display:flex;gap:30px;font-size:15px}
+nav a:hover{color:var(--gold)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:72px 0 88px}
+.hero h1{font-size:clamp(46px,7vw,92px);letter-spacing:-.01em}
+.hero p{max-width:34ch;color:var(--muted);margin:26px 0 34px;font-size:18px}
+.btn{display:inline-block;padding:14px 34px;border:1px solid var(--ink);font-size:15px;letter-spacing:.04em;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#16171a}
+.btn.gold:hover{filter:brightness(1.08);background:var(--gold);color:#16171a}
+.art{aspect-ratio:1;background:var(--surface);border-radius:50% 50% 4px 4px;display:grid;place-items:center;overflow:hidden}
+.art svg{width:78%;height:auto;animation:turn 1.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes turn{from{opacity:0;transform:rotate(-14deg) scale(.92)}}
+@media (prefers-reduced-motion:reduce){.art svg{animation:none}html{scroll-behavior:auto}}
+section{padding:88px 0}
+.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:44px;gap:20px;flex-wrap:wrap}
+h2{font-size:clamp(34px,4.5vw,54px)}
+.head p{color:var(--muted);margin:0;max-width:36ch}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.col{background:var(--surface);padding:34px 28px 28px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.col:nth-child(2){margin-top:36px}
+.col h3{font-size:34px}
+.col span{color:var(--muted);font-size:15px}
+.col svg{width:84px;height:84px;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.item{border-bottom:1px solid var(--line);padding-bottom:18px}
+.swatch{aspect-ratio:4/5;background:var(--surface);display:grid;place-items:center;margin-bottom:16px}
+.swatch svg{width:46%}
+.item h3{font-size:24px;font-weight:400}
+.item div{display:flex;justify-content:space-between;color:var(--muted);font-size:15px}
+.story{background:var(--deep);color:var(--deep-ink)}
+.story .in{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story p{opacity:.82;max-width:46ch}
+.facts{display:grid;gap:26px}
+.facts div{border-top:1px solid rgba(243,239,232,.25);padding-top:16px}
+.facts h3{font-size:30px;color:#d9b97f}
+.facts p{margin:4px 0 0;font-size:15px}
+.news{text-align:center}
+.news p{color:var(--muted);margin:14px auto 30px;max-width:40ch}
+form{display:flex;max-width:480px;margin:0 auto}
+input{flex:1;min-width:0;padding:14px 18px;border:1px solid var(--ink);border-right:0;background:transparent;color:var(--ink);font:inherit}
+form button{padding:0 28px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font:inherit;cursor:pointer}
+#ok{min-height:1.6em;margin-top:14px;color:var(--gold);font-size:15px}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:860px){nav{display:none}.hero,.story .in{grid-template-columns:1fr}.cols{grid-template-columns:1fr}.col:nth-child(2){margin-top:0}.grid{grid-template-columns:repeat(2,1fr)}section{padding:64px 0}.hero{padding:44px 0 56px}.art{max-width:420px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">Aurelia</a>
+<nav><a href="#collections">Collections</a><a href="#new">New arrivals</a><a href="#story">Our story</a><a href="#join">Newsletter</a></nav>
+<a class="btn" href="#new" style="padding:9px 22px">Shop</a></div></header>
+
+<main id="top">
+<div class="wrap hero">
+<div><h1>Fine jewellery, made to be worn daily</h1>
+<p>Recycled gold, ethically sourced stones, finished by hand in small batches.</p>
+<a class="btn gold" href="#new">Shop new arrivals</a></div>
+<div class="art" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6cb98"/><stop offset=".5" stop-color="#a98652"/><stop offset="1" stop-color="#d8b97d"/></linearGradient></defs>
+<circle cx="100" cy="112" r="56" fill="none" stroke="url(#g)" stroke-width="12"/>
+<circle cx="100" cy="112" r="47" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+<polygon points="100,28 118,46 100,68 82,46" fill="#e9f1f0" stroke="#a98652" stroke-width="3"/>
+<polygon points="82,46 118,46 100,68" fill="#bcd3d0"/><polygon points="100,28 118,46 82,46" fill="#fff" opacity=".8"/></svg></div>
+</div>
+
+<section id="collections" style="background:var(--bg)"><div class="wrap">
+<div class="head"><h2>Collections</h2><p>Three ways to build a jewellery box you'll reach for every morning.</p></div>
+<div class="cols">
+<a class="col" href="#new"><div><svg viewBox="0 0 80 80" fill="none" stroke="#a98652" stroke-width="3"><circle cx="40" cy="46" r="22"/><path d="M32 22l8-10 8 10z"/></svg><h3>Rings</h3></div><span>Solitaires, stacking bands, signets</span></a>
+<a class="col" href="#new"><div><svg viewBox="0 0 80 80" fill="none" stroke="#a98652" stroke-width="3"><path d="M10 18c0 36 60 36 60 0"/><circle cx="40" cy="56" r="7"/></svg><h3>Necklaces</h3></div><span>Fine chains, pearls, pendants</span></a>
+<a class="col" href="#new"><div><svg viewBox="0 0 80 80" fill="none" stroke="#a98652" stroke-width="3"><path d="M40 8v26"/><circle cx="40" cy="48" r="14"/></svg><h3>Earrings</h3></div><span>Studs, hoops, drops</span></a>
+</div></div></section>
+
+<section id="new" style="background:var(--bg);padding-top:24px"><div class="wrap">
+<div class="head"><h2>New arrivals</h2><p>Free engraving on every order over $150.</p></div>
+<div class="grid">
+<div class="item"><div class="swatch"><svg viewBox="0 0 60 60" fill="none" stroke="#a98652" stroke-width="4"><circle cx="30" cy="34" r="18"/></svg></div><h3>Luna band</h3><div><span>18k gold vermeil</span><span>$120</span></div></div>
+<div class="item"><div class="swatch"><svg viewBox="0 0 60 60" fill="none" stroke="#a98652" stroke-width="2.5"><path d="M6 10c0 30 48 30 48 0"/><circle cx="30" cy="42" r="5" fill="#e9f1f0"/></svg></div><h3>Soleil pendant</h3><div><span>Gold, moonstone</span><span>$185</span></div></div>
+<div class="item"><div class="swatch"><svg viewBox="0 0 60 60" fill="none" stroke="#a98652" stroke-width="3"><circle cx="30" cy="30" r="20"/><circle cx="30" cy="30" r="13" stroke-width="1.5"/></svg></div><h3>Orbit hoops</h3><div><span>Recycled gold</span><span>$140</span></div></div>
+<div class="item"><div class="swatch"><svg viewBox="0 0 60 60" fill="none" stroke="#a98652" stroke-width="3"><path d="M10 14l20 22 20-22M30 36v14"/><circle cx="30" cy="52" r="3" fill="#a98652"/></svg></div><h3>Perle studs</h3><div><span>Freshwater pearl</span><span>$95</span></div></div>
+</div></div></section>
+
+<section class="story" id="story"><div class="wrap in">
+<div><h2>Made slowly, kept for years</h2><p style="margin-top:22px">Every piece begins as a sketch in our studio and ends in the hands of a single maker. We use recycled metals and stones with a traceable origin, so what you wear looks good and sits well with you.</p></div>
+<div class="facts"><div><h3>100% recycled gold</h3><p>Melted down and recast, never newly mined.</p></div><div><h3>2-year guarantee</h3><p>Free repairs and resizing for every piece.</p></div><div><h3>30-day returns</h3><p>Try it at home. Send it back if it isn't right.</p></div></div>
+</div></section>
+
+<section class="news" id="join"><div class="wrap">
+<h2>Join the list</h2><p>Early access to new collections and 10% off your first order.</p>
+<form id="f"><input id="em" type="email" placeholder="Email address" aria-label="Email address" required><button type="submit">Subscribe</button></form>
+<div id="ok" role="status"></div></div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Aurelia Jewellery</span><span>hello@aurelia.example · Instagram · Pinterest</span></div></footer>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').textContent='Thanks, you’re on the list.';this.reset()});
+</script>
+</body>
+</html>
